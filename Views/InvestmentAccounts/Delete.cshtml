@@ -1,0 +1,89 @@
+﻿@model EasyCredit.Models.InvestmentAccount
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InvestmentAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestementAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvestementAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyRevenue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyRevenue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especificaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especificaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateInvestment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateInvestment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clients.Cte_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayMethodes.PayMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayMethodes.PayMethod)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

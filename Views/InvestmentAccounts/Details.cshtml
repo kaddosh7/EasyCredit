@@ -1,0 +1,119 @@
+﻿@model EasyCredit.Models.InvestmentAccount
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InvestmentAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> @Html.DisplayNameFor(model => model.Code) </dt>
+        <dd> @Html.DisplayFor(model => model.Code) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.InvestementAmount) </dt>
+        <dd> @Html.DisplayFor(model => model.InvestementAmount) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.MonthlyRevenue) </dt>
+        <dd> @Html.DisplayFor(model => model.MonthlyRevenue) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.Especificaciones) </dt>
+        <dd> @Html.DisplayFor(model => model.Especificaciones) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.DateInvestment) </dt>
+        <dd> @Html.DisplayFor(model => model.DateInvestment) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.RegisteredBy) </dt>
+        <dd> @Html.DisplayFor(model => model.RegisteredBy) </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.Clients.Cte_FirstName) </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+            @Html.DisplayFor(model => model.Clients.Cte_LastName)
+        </dd>
+
+        <dt> @Html.DisplayNameFor(model => model.PayMethodes.PayMethod) </dt>
+        <dd> @Html.DisplayFor(model => model.PayMethodes.PayMethod) </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br />
+<br />
+<div class="col-md-12 tb_financiacion">
+    @{
+    <div class="row" style="width: 100%; margin: 0 auto;">
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <h4 class="text-primary"> Amortizaci&oacute;n de Pr&eacute;stamo </h4> </a></li>
+                <li role="presentation"><a href="#detalles" aria-controls="detalles" role="tab" data-toggle="tab"> <h4 class="text-primary"> Pagos Realizados </h4>  </a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div id="form_amortizacion">
+                        <table class="table table-striped table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th> Cuotas </th>
+                                    <th class="text-right"> Cuota </th>
+                                    <th class="text-right"> Interes Mensual </th>
+                                    <th class="text-right"> Amortizaci&oacute;n Principal </th>
+                                    <th class="text-right"> Amortizaci&oacute;n Total </th>
+                                    <th class="text-right"> Capital Pendiente </th>.
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    decimal capital = Model.InvestementAmount;
+                                    decimal interes = (Decimal)Model.MonthlyRevenue / (Decimal)Model.CuotesAmount;
+                                    int plazo = (int)Model.CuotesQuantity;
+
+                                    decimal cuota = capital * (interes / (decimal)(1 - Math.Pow(1 + Convert.ToDouble(interes), -plazo)));
+
+                                    decimal interes_mensual = 0;
+                                    decimal amortizacion_ini = 0;
+                                    decimal amortizacion_fin = 0;
+                                    int i = 1;
+
+                                    for (i = 1; i <= plazo; i++)
+                                    {
+                                        interes_mensual = Math.Round((interes * capital), 2);
+                                        capital = Math.Round(capital - cuota + interes_mensual, 2);
+
+                                        amortizacion_fin += Math.Round(cuota - interes_mensual, 2);
+                                        amortizacion_ini = cuota - interes_mensual;
+                                        <tr>
+                                            <td> @i </td>
+                                            <td class="text-right"> @Math.Round(cuota, MidpointRounding.AwayFromZero) </td>
+                                            <td class="text-right"> @Math.Round(interes_mensual, MidpointRounding.AwayFromZero) </td>
+                                            <td class="text-right"> @Math.Round(amortizacion_ini, MidpointRounding.AwayFromZero) </td>
+                                            <td class="text-right"> @Math.Round(amortizacion_fin, MidpointRounding.AwayFromZero) </td>
+                                            <td class="text-right"> @Math.Round(capital, MidpointRounding.AwayFromZero) </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="detalles">
+                    <div class="col-md-12">
+                        <h1> Pagos Realizados </h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+</div>

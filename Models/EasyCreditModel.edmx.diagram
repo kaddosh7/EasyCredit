@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f98c4f4a001e4664806d706b9036d8ca" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="EasyCreditModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.AspNetUserClaims" Width="1.875" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.AspNetUserLogins" Width="1.75" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.Clients" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.InvestmentAccount" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.LoanAccount" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.PayMethodes" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.SavingAccounts" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.Transactions" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.TypeTransaction" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyCreditModel.Warranty" Width="1.5" PointX="3.75" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="EasyCreditModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__Investmen__IdCli__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__LoanAccou__IdCli__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__LoanAccou__IdWar__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__SavingAcc__IdCli__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__Transacti__IdCli__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__Investmen__PayMe__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__LoanAccou__IdWar__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__LoanAccou__PayMe__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__LoanAccou__TypeT__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__SavingAcc__PayMe__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__Transacti__PayMe__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.FK__Transacti__TypeT__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="EasyCreditModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

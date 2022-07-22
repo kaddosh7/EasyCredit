@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EasyCredit.Models.SavingAccounts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOpeningAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.Cte_FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayMethodes.PayMethod)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOpeningAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepositAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisteredBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clients.Cte_FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayMethodes.PayMethod)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

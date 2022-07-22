@@ -1,0 +1,59 @@
+﻿@model EasyCredit.Models.SavingAccounts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SavingAccounts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOpeningAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOpeningAccount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepositAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clients.Cte_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayMethodes.PayMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayMethodes.PayMethod)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

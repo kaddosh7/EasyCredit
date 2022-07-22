@@ -1,0 +1,75 @@
+﻿@model EasyCredit.Models.Transactions
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="logo_timbre" class="col-md-12">
+    <h1 style="font-size: 4em;"> Credi<span style="color: #900; font-weight: 600">Fast</span> </h1>
+    <span> Av. Circunvalaci&oacute;n Num. 456, Ens Evaristo Morales. Santo Domingo</span> <br />
+    <span> Telefonos: 829 555-5555</span>
+</div>
+
+
+<div class="col-md-12">
+    <h2 style="border-bottom: 1px solid #000;">Comprobante de Pago de Cuota</h2>
+</div>
+
+<div class="col-md-12">
+    <div id="area_data" class="col-md-10">
+        <h3>Comprobante N&uacute;m.: @Model.Id</h3>
+        <h3 style="margin-top: -8px;">Id del Pr&eacute;stamo: @Model.LoanId</h3>
+    </div>
+
+    <div id="area_fecha" style="margin-top: 18px; text-align: right;" class="col-md-2">
+        <div class="col-md-12"> @Html.DisplayNameFor(model => model.DepositDate) </div>
+        <div class="col-md-12"> @Html.DisplayFor(model => model.DepositDate) </div>
+    </div> <br />
+    <div id="divider" class="col-md-12">
+        <br />
+    </div>
+
+    <div id="cuerpo_comprobante" class="col-md-12">
+        <hr />
+        <div class="col-md-12">
+            <div> @Html.DisplayNameFor(model => model.Clients.Cte_FirstName) </div>
+            @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+            @Html.DisplayFor(model => model.Clients.Cte_LastName)
+            <br /><br />
+        </div>
+
+        <div class="col-md-12">
+            <div> @Html.DisplayNameFor(model => model.TransactionAmount) </div>
+            <div> @Html.DisplayFor(model => model.TransactionAmount) </div>
+            <br />
+        </div>
+
+        <div class="col-md-12">
+            <div> @Html.DisplayNameFor(model => model.PayMethodes.PayMethod) </div>
+            <div> @Html.DisplayFor(model => model.PayMethodes.PayMethod) </div>
+            <br />
+        </div>
+
+        <div class="col-md-12">
+            <div> @Html.DisplayNameFor(model => model.TypeTransaction.TypeTransId) </div>
+            <div> @Html.DisplayFor(model => model.TypeTransaction.TypeTransId) </div>
+            <br /><br />
+        </div>
+
+        <div id="firma_comprobante" class="col-md-12">
+            <div> @Html.DisplayFor(model => model.RegisteredBy) </div>
+            <div> @Html.DisplayNameFor(model => model.RegisteredBy) </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="btn_links" class="col-md-12 row">
+    <div class="btn btn-sm btn-success">
+        <span onclick="window.print()"> Imprimir Comprobante </span>
+    </div>
+    <div class="btn btn-sm btn-info">
+        @Html.ActionLink("  Transacciones ", "Index")
+    </div>
+</div>

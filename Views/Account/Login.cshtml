@@ -1,0 +1,45 @@
+﻿@using EasyCredit.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Iniciar Sesión";
+}
+
+<div class="container-fluid">
+    <div class="col-md-12">
+        <section id="loginFormulario" class="">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h2>@ViewBag.Title</h2>
+                <h4>Utilice una cuenta local para iniciar sesión</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label" }) <br />
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label" }) <br />
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <br />
+                        <input type="submit" value="Iniciar sesión" class="btn btn-primary col-md-12" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<EasyCredit.Models.Transactions>
+
+@{
+    ViewBag.Title = "Relacion de Transacciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Relacion de Transacciones</h2>
+
+<br />
+<form asp-controller="Transactions" asp-action="Index">
+    <div class="container-fluid row">
+        <div class="control-label col-md-2">
+            Nivel de Mora
+        </div>
+        <div class="col-md-6 row">
+            <div class="col-md-6 row">
+                <input type="number" name="Search" class="form-control" min="1" max="3"/>
+            </div>
+            <div class="col-md-6 row">
+                <input style="margin-left: 6px;" type="submit" class="btn btn-m btn-primary" value=" Filtrar " />
+                <span style="margin-left: 10px;" id="stay-home" class="btn btn-m btn-success"> @Html.ActionLink("Mostrar Todos", "Index") </span>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th class="text-right" style="padding-right: 18px;">
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepositDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.Cte_FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayMethodes.PayMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeTransaction.TypeTransId)
+        </th>
+        <th class="text-right">
+            @Html.DisplayNameFor(model => model.mora)
+        </th>
+        <th class="text-right"> Acciones </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-right" style="padding-right: 18px;">
+                @Html.DisplayFor(modelItem => item.TransactionAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisteredBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clients.Cte_FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayMethodes.PayMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeTransaction.TypeTransId)
+            </td>
+            <td class="text-right">
+                @Html.DisplayFor(modelItem => item.mora)
+            </td>
+            @{
+                if (User.Identity.Name == "kaddosh77@gmail.com")
+                {
+                    <td style="margin: 0 !important;" id="btn_links" class="btn-group">
+                        <span class="btn btn-info"> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) </span>
+                        <span class="btn btn-success"> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) </span>
+                        <span class="btn btn-danger"> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) </span>
+                    </td>
+                }
+                else
+                {
+                    <td style="margin: 0 !important;" id="btn_links" class="btn-group">
+                        <span class="btn-sm btn btn-info"> @Html.ActionLink(" Imprimir ", "Details", new { id = item.Id }) </span>
+                    </td>
+                }
+            }
+        </tr>
+    }
+    <tfoot style="font-weight: bolder" class="panel-footer">
+        <tr>
+            <td colspan="8" class="bg-success"></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 16px; padding-right: 18px;" class="text-right">
+                @{
+                    @ViewBag.TotalTransacciones
+                }
+            </td>
+            <td style="padding-top: 16px;" colspan="5">
+                Total de Transacciones
+            </td>
+            <td style="padding-top: 16px;" class="text-right">
+                @{ 
+                    @ViewBag.TotalIntereses
+                }
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </tfoot>
+</table>

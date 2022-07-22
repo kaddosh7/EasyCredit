@@ -1,0 +1,264 @@
+﻿@model EasyCredit.Models.LoanAccount
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="col-md-10">
+        <h2>Detalles de Prestamo </h2>
+    </div>
+    @{
+        if (Model.Aprobacion != 0)
+        {
+            <div style="margin-right: -16px;" class="col-md-2 pull-right">
+                <span id="btn_links" class="btn btn-success">  @Html.ActionLink(" Realizar Pago ", "../Transactions/AddLoanPay", new { id = Model.Id }) </span>  &nbsp;&nbsp;
+            </div>
+        }
+    }
+
+</div>
+<div style="text-align: left; margin-bottom: 30px; padding: 10px; font-weight: bolder;" class="bg-primary col-md-12 text-left">
+    Orden Numero <span> @Model.Id </span>
+</div>
+<div id="loan_amortizacion" class="container-fluid row">
+    <hr />
+    <div class="container-fluid row">
+        <div class="col-md-5 row">
+            <div class="col-md-12 row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.RequiredAmount) </div>
+                <div class="col-md-7 reg-datos"> @Html.DisplayFor(model => model.RequiredAmount) </div>
+            </div>
+            <div class="col-md-12 row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.Clients1.Cte_FirstName) </div>
+                <div class="col-md-7 reg-datos">
+                    @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+                    @Html.DisplayFor(model => model.Clients.Cte_LastName)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="col-md- row">
+                <div class="row">
+                    <div class="col-md-6"> @Html.DisplayNameFor(model => model.CuotesQuantity) </div>
+                    <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.CuotesQuantity) </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"> @Html.DisplayNameFor(model => model.CuotesAmount) </div>
+                    <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.CuotesAmount) </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"> @Html.DisplayNameFor(model => model.MonthlyInterest) </div>
+                    <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.MonthlyInterest) </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 pull-right">
+            <div class="col-md- row">
+                <div class="col-md-6"> @Html.DisplayNameFor(model => model.RequirementDate) </div>
+                <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.RequirementDate) </div>
+            </div>
+
+            <div class="col-md- row">
+                <div class="col-md-6"> @Html.DisplayNameFor(model => model.AproveDate) </div>
+                <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.AproveDate) </div>
+            </div>
+
+            <div class="col-md- row">
+                <div class="col-md-6"> @Html.DisplayNameFor(model => model.InitialPayDate) </div>
+                <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.InitialPayDate) </div>
+            </div>
+
+            <div class="col-md- row">
+                <div class="col-md-6"> @Html.DisplayNameFor(model => model.FinalPayDate) </div>
+                <div class="col-md-6 reg-datos"> @Html.DisplayFor(model => model.FinalPayDate) </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <hr />
+    </div>
+
+    <div class="col-md-12 row">
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.RegisteredBy) </div>
+                <div class="col-md-7 reg-datos"> @Html.DisplayFor(model => model.RegisteredBy) </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.IdWarrant) </div>
+                <div class="col-md-7 reg-datos">
+                    @Html.DisplayFor(model => model.Clients1.Cte_FirstName)
+                    @Html.DisplayFor(model => model.Clients1.Cte_LastName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.Warranty.TypeWarranty) </div>
+                <div class="col-md-7 reg-datos"> @Html.DisplayFor(model => model.Warranty.TypeWarranty) </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="col-md-5">  </div>
+            <div class="col-md-7">  </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.PayMethodes.PayMethod) </div>
+                <div class="col-md-7 reg-datos"> @Html.DisplayFor(model => model.PayMethodes.PayMethod) </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5"> @Html.DisplayNameFor(model => model.TypeTransaction.TypeTransId) </div>
+                <div class="col-md-7 reg-datos"> @Html.DisplayFor(model => model.TypeTransaction.TypeTransId) </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<div class="col-md-12 tb_financiacion">
+    @{
+        if (Model.Aprobacion == 0)
+        {
+            <h4 class="text-danger"> Pendiente de Aprobacion! </h4>
+        }
+        else
+        {
+            <div class="row" style="width: 100%; margin: 0 auto;">
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <h4 class="text-primary"> Amortizaci&oacute;n de Pr&eacute;stamo </h4> </a></li>
+                        <li role="presentation"><a href="#detalles" aria-controls="detalles" role="tab" data-toggle="tab"> <h4 class="text-primary"> Pagos Realizados </h4>  </a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div id="form_amortizacion">
+                                <table class="table table-striped table-condensed table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th> Cuotas </th>
+                                            <th> Fecha </th>
+                                            <th class="text-right"> Cuota </th>
+                                            <th class="text-right"> Interes Mensual </th>
+                                            <th class="text-right"> Amortizaci&oacute;n Principal </th>
+                                            <th class="text-right"> Amortizaci&oacute;n Total </th>
+                                            <th class="text-right"> Capital Pendiente </th>.
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            decimal capital = Model.RequiredAmount;
+                                            decimal interes = Model.MonthlyInterest / Model.CuotesAmount;
+                                            int plazo = Model.CuotesQuantity;
+
+                                            decimal cuota = capital * (interes / (decimal)(1 - Math.Pow(1 + Convert.ToDouble(interes), -plazo)));
+
+                                            decimal interes_mensual = 0;
+                                            decimal amortizacion_ini = 0;
+                                            decimal amortizacion_fin = 0;
+                                            int i = 1;
+
+                                            for (i = 1; i <= plazo; i++)
+                                            {
+                                                interes_mensual = Math.Round((interes * capital), 2);
+                                                capital = Math.Round(capital - cuota + interes_mensual, 2);
+
+                                                amortizacion_fin += Math.Round(cuota - interes_mensual, 2);
+                                                amortizacion_ini = cuota - interes_mensual;
+                                                <tr>
+                                                    <td> @i </td>
+                                                    <td> @Model.InitialPayDate.AddMonths(i) </td>
+                                                    <td class="text-right"> @Math.Round(cuota, MidpointRounding.AwayFromZero) </td>
+                                                    <td class="text-right"> @Math.Round(interes_mensual, MidpointRounding.AwayFromZero) </td>
+                                                    <td class="text-right"> @Math.Round(amortizacion_ini, MidpointRounding.AwayFromZero) </td>
+                                                    <td class="text-right"> @Math.Round(amortizacion_fin, MidpointRounding.AwayFromZero) </td>
+                                                    <td class="text-right"> @Math.Round(capital, MidpointRounding.AwayFromZero) </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="detalles">
+                            <div class="col-md-12">
+                                <h1> Pagos Realizados </h1>
+
+                                <table class="table table-condensed table-hover table-striped">
+                                    <tr>
+                                        <th> Id Transaccion </th>
+                                        <th> Fecha </th>
+                                        <th class="text-right"> Monto Transaccion </th>
+                                        <th class="text-right"> Intereses x Mora </th>
+                                        <th class="text-right"> Monto Pagado </th>
+                                    </tr>
+                                    <tbody>
+                                        @{
+                                            foreach (var item in ViewBag.IdTransaccion)
+                                            {
+                                                var montoPagado = (decimal)item.TransactionAmount + (decimal)item.mora;
+                                                if (@Model.Id == @item.LoanId)
+                                                {
+                                                    <tr>
+                                                        <td> @item.Id </td>
+                                                        <td> @item.DepositDate </td>
+                                                        <td class="text-right"> @item.TransactionAmount </td>
+                                                        <td class="text-right"> @item.mora </td>
+                                                        <td class="text-right"> @montoPagado </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        }
+                                        <tr>
+                                            <td colspan="5" class="bg-success"></td>
+                                        </tr>
+                                        <tr style="font-weight: 700;">
+                                            <td style="padding: 12px 6px; text-align: right;" colspan="4"> Total Pagado </td>
+                                            <td style="padding: 12px 6px; text-align: right;">
+                                                @{
+                                                    @ViewBag.MontoPagado
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="btn-group">
+    <div id="btn_links" class="form-group">
+        @{
+            if (User.Identity.Name == "kaddosh77@gmail.com")
+            {
+                if (Model.Aprobacion == 0)
+                {
+                    <div class="col-md-6">
+                        <span class="btn btn-success">  @Html.ActionLink(" Revisar Para Aprobacion ", "LoanAprov", new { id = Model.Id }) </span>  &nbsp;&nbsp;
+                    </div>
+                }
+            }
+        }
+        <div class="col-md-2">
+            <span class="btn btn-info"> @Html.ActionLink("Solicitudes de Prestamo", "Index") </span>
+        </div>
+    </div>
+</div>

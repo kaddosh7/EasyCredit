@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EasyCredit.Models.LoanAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-10">
+        <h2>Relacion de Prestamos</h2>
+    </div>
+    <div class="col-md-2">
+        <span id="btn_links" class="text-right btn btn-primary">
+            @Html.ActionLink("Nuevo Prestamo a Cliente", "Create")
+        </span>
+    </div>
+</div>
+<table class="table table-condensed table-striped">
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.Id) </th>
+        <th> @Html.DisplayNameFor(model => model.RequirementDate) </th>
+        <th> @Html.DisplayNameFor(model => model.Clients.Cte_FirstName) </th>
+        <th class="text-right"> @Html.DisplayNameFor(model => model.Aprobacion) </th>
+        <th class="text-right"> @Html.DisplayNameFor(model => model.RequiredAmount) </th>
+        <th class="text-right"> @Html.DisplayNameFor(model => model.CuotesQuantity) </th>
+        <th class="text-right"> @Html.DisplayNameFor(model => model.CuotesAmount) </th>
+        <th class="text-right"> @Html.DisplayNameFor(model => model.MonthlyInterest) </th>
+        <th class="text-right"> Acciones </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.Id) </td>
+            <td> @Html.DisplayFor(modelItem => item.RequirementDate) </td>
+            <td>
+                @Html.ActionLink(
+                item.Clients.Cte_FirstName + " " + item.Clients.Cte_LastName,
+                "Details", new { id = item.Id })
+            </td>
+            <td class="text-right"> @Html.DisplayFor(modelItem => item.Aprobacion) </td>
+            <td class="text-right"> @Html.DisplayFor(modelItem => item.RequiredAmount) </td>
+            <td class="text-right"> @Html.DisplayFor(modelItem => item.CuotesQuantity) </td>
+            <td class="text-right"> @Html.DisplayFor(modelItem => item.CuotesAmount) </td>
+            <td class="text-right"> @Html.DisplayFor(modelItem => item.MonthlyInterest) </td>
+
+            @{
+                if (User.Identity.Name == "kaddosh77@gmail.com")
+                {
+                    if (@item.Aprobacion == 0)
+                    {
+                        <td style="margin: 0 !important;" id="btn_links" class="btn-group">
+                            <span style="width: 100%" class="btn btn-primary btn-sm"> @Html.ActionLink("Aprobar Prestamo", "Edit", new { id = item.Id }) </span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="margin: 0 !important;" id="btn_links" class="btn-group">
+                            <span class="btn btn-info btn-sm"> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) </span>
+                            <span class="btn btn-danger btn-sm"> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) </span>
+                        </td>
+                    }
+                }
+                else
+                {
+                    if (@item.Aprobacion == 0)
+                    {
+                        <td class="text-danger btn btn-sm btn-warning pull-right"> Pendiente  </td>
+                    }
+                    else if (@item.Aprobacion == 1)
+                    {
+                        <td style="margin: 0 !important;" id="btn_links" class="btn-group">
+                            <span class="btn btn-info btn-sm"> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) </span>
+                        </td>
+                    }
+                }
+            }
+        </tr>
+    }
+</table>

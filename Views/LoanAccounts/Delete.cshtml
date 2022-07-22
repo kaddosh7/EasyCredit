@@ -1,0 +1,137 @@
+﻿@model EasyCredit.Models.LoanAccount
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LoanAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequiredAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuotesQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuotesQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuotesAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuotesAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthlyInterest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonthlyInterest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequirementDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequirementDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AproveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AproveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialPayDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitialPayDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalPayDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinalPayDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clients.Cte_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clients.Cte_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clients1.Cte_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clients1.Cte_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warranty.TypeWarranty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warranty.TypeWarranty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PayMethodes.PayMethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayMethodes.PayMethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeTransaction.TypeTransId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeTransaction.TypeTransId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

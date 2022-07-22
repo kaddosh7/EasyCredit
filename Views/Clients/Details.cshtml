@@ -1,0 +1,75 @@
+﻿@model EasyCredit.Models.Clients
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clients</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cte_FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cte_FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cte_LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cte_LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cte_Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cte_Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cte_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cte_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cte_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cte_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

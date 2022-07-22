@@ -1,0 +1,193 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}
+*/
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+#stay-home a {
+    color: #FFF;
+    text-decoration: none;
+    float: right;
+}
+
+#loginFormulario {
+    margin: 0 auto;
+    width: 25%;
+    text-align: center;
+}
+
+#loan_amortizacion .reg-datos {
+    border-bottom: 1px solid #121212;
+    background: #deebed;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.tb_financiacion_partial {
+    margin-left: 18px;
+    max-width: 40% !important;
+}
+
+.tb_financiacion h4 {
+    font-weight: bolder;
+    border-bottom: 1px solid #0f4264;
+}
+
+.tb_financiacion .row {
+    border-bottom: 1px solid #0f4264;
+    border-collapse: collapse;
+    padding: 4px 0;
+    margin: 0;
+}
+
+#btn_links {
+    display: block !important;
+    margin-top: 16px !important;
+    float: right;
+    font-weight: bolder;
+}
+
+#btn_links a {
+    color: #FFF !important;
+    text-decoration: none;
+    display: block;
+}
+
+#btn_links a:hover {
+    color: #FFF !important;
+    text-decoration: none;
+}
+
+#side-navigator {
+    height: 100vh;
+    color: #b2b2b2;
+    padding-top: 20px !important;
+}
+
+div.container-fluid.row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#menu-acciones {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#menu-acciones li {
+    width: 100% !important;
+}
+
+#menu-acciones a {
+    display: block;
+    padding: 10px;
+    transition: all 0.5s;
+}
+
+#menu-acciones a:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background: #121212;
+}
+
+.dl-horizontal dt {
+    padding: 2px 0;
+    box-sizing: border-box;
+}
+
+.dl-horizontal dd {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.current-page {
+    color: #FFF !important;
+    background: #090909;
+}
+
+#logo_timbre {
+    display: none;
+}
+#firma_comprobante {
+    display: none;
+}
+
+
+/**  ================ DISENIO DE IMPRESION ================ */
+@media print {
+    #side-navigator {
+        display: none;
+    }
+
+    #btn_links .btn-success, .btn-info {
+        display: none;
+    }
+    #divider {
+        display: block;
+        width: 100%;
+        height: 30px;
+        background: #888;
+    }
+    #logo_timbre {
+        display: block;
+        margin-top: -50px;
+    }
+    #area_fecha {
+        width: 45%;
+        float: right;
+        font-size: 1.5em;
+        text-align: right;
+    }
+
+    #area_data {
+        width: 45%;
+        float: left;
+    }
+
+    #firma_comprobante {
+        display: block;
+        width: 100%;
+        margin: 30px auto;
+        text-align: center;
+        font-weight: 600;
+    }
+    #cuerpo_comprobante {
+        font-size: 1.5em;
+        margin-top: 30px;
+        padding-top: 30px;
+    }
+} 
